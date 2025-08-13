@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .registration-form {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="number"]:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-item:hover {
+            border-color: #667eea;
+            background: #f0f2ff;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #667eea;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            font-weight: normal;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .gender-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .gender-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gender-item:hover {
+            border-color: #667eea;
+            background: #f0f2ff;
+        }
+
+        .gender-item input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #667eea;
+        }
+
+        .gender-item label {
+            margin: 0;
+            font-weight: 500;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+        }
+
+        .reset-btn {
+            background: linear-gradient(45deg, #f44336, #da190b);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .form-section {
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Student Registration Form</h1>
+        
+        <form class="registration-form" id="registrationForm">
+
+            <div class="form-section">
+                <h3 class="section-title">👤 Personal Information</h3>
+                
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" placeholder="Enter your age" min="16" max="100" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gender">Gender:</label>
+                        <div class="gender-group">
+                            <div class="gender-item">
+                                <input type="radio" id="male" name="gender" value="male" required>
+                                <label for="male">Male</label>
+                            </div>
+                            <div class="gender-item">
+                                <input type="radio" id="female" name="gender" value="female">
+                                <label for="female">Female</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3 class="section-title">🎓 Academic Information</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="branch">Branch:</label>
+                        <select id="branch" name="branch" required>
+                            <option value="">Select Branch</option>
+                            <option value="computer-science">Computer Science</option>
+                            <option value="information-technology">Information Technology</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="mechanical">Mechanical</option>
+                            <option value="civil">Civil</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="year">Year:</label>
+                        <select id="year" name="year" required>
+                            <option value="">Select Year</option>
+                            <option value="1">1st Year</option>
+                            <option value="2">2nd Year</option>
+                            <option value="3">3rd Year</option>
+                            <option value="4">4th Year</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="specialization">Specialization:</label>
+                    <input type="text" id="specialization" name="specialization" placeholder="Enter your specialization" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3 class="section-title">Course Offerings</h3>
+                
+                <div class="form-group">
+                    <label>Select Courses (Check all that apply):</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="html" name="courses" value="html">
+                            <label for="html">HTML</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="css" name="courses" value="css">
+                            <label for="css">CSS</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="mysql" name="courses" value="mysql">
+                            <label for="mysql">MySQL</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="js" name="courses" value="js">
+                            <label for="js">JavaScript</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="python" name="courses" value="python">
+                            <label for="python">Python</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="java" name="courses" value="java">
+                            <label for="java">Java</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button type="submit" class="btn submit-btn">Submit</button>
+                <button type="reset" class="btn reset-btn">Reset</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            const selectedCourses = [];
+            document.querySelectorAll('input[name="courses"]:checked').forEach(checkbox => {
+                selectedCourses.push(checkbox.value);
+            });
+            data.courses = selectedCourses;
+            
+            alert('Registration Form Submitted!\n\n' + 
+                  'Name: ' + data.name + '\n' +
+                  'Age: ' + data.age + '\n' +
+                  'Gender: ' + data.gender + '\n' +
+                  'Branch: ' + data.branch + '\n' +
+                  'Year: ' + data.year + '\n' +
+                  'Specialization: ' + data.specialization + '\n' +
+                  'Selected Courses: ' + selectedCourses.join(', '));
+        });
+    </script>
+</body>
+</html>
